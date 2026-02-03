@@ -15,3 +15,4 @@ def decrypt(fichier, keyPub, keyPriv):
     # Simuler le processus de déchiffrement
     texteDéchiffré = f"Déchiffré avec clé publique {keyPub} et clé privée {keyPriv}: {texteChiffré}"
     return texteDéchiffré
+     
