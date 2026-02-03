@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 def premier_entre_eux(a, b):
     if a > b:
         a, b = b, a
@@ -29,6 +29,3 @@ m_cry = cryptage(m, e, n)
 print(n)
 print(e)
 print(m_cry)
-=======
-yhfrtyhfhy
->>>>>>> 4f3feef1906a34ecf5d2c37a518fa3a7db6a3466
