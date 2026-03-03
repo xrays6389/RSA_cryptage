@@ -58,17 +58,21 @@ def dechiffrer_fichier(chemin_fichier, d, n, dossier_sortie):
         str: Chemin du fichier déchiffré
     """
     try:
-        # Lire le message chiffré
+        # Lire le message chiffré avec sa longueur
         with open(chemin_fichier, 'r') as f:
-            message_chiffré = int(f.read().strip())
+            contenu_fichier = f.read().strip()
+        
+        # Séparer la longueur originale et le message chiffré
+        longueur_str, message_chiffré_str = contenu_fichier.split('|')
+        longueur_originale = int(longueur_str)
+        message_chiffré = int(message_chiffré_str)
         
         # Déchiffrer
         message_décrypté = decryptage(message_chiffré, d, n)
         
-        # Convertir de nouveau en texte
-        # Calculer le nombre de bytes nécessaires
+        # Convertir de nouveau en texte avec la bonne longueur
         contenu = message_décrypté.to_bytes(
-            (message_décrypté.bit_length() + 7) // 8, 
+            longueur_originale, 
             byteorder='big'
         ).decode('utf-8')
         

@@ -47,7 +47,8 @@ def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
             contenu = f.read()
         
         # Convertir en nombre entier (ASCII)
-        message = int.from_bytes(contenu.encode('utf-8'), byteorder='big')
+        contenu_bytes = contenu.encode('utf-8')
+        message = int.from_bytes(contenu_bytes, byteorder='big')
         
         # Chiffrer
         message_chiffré = cryptage(message, e, n)
@@ -57,8 +58,9 @@ def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
         nom_sortie = f"chiffré_{nom_fichier}.txt"
         chemin_sortie = os.path.join(dossier_sortie, nom_sortie)
         
+        # Stocker: longueur_originale|message_chiffré
         with open(chemin_sortie, 'w') as f:
-            f.write(str(message_chiffré))
+            f.write(f"{len(contenu_bytes)}|{message_chiffré}")
         
         return chemin_sortie
     
