@@ -22,7 +22,7 @@ def window_generer_clés():
     
     try:
         # Générer les clés
-        public_key, private_key = generer_clés_aléatoires(min_bits=8, max_bits=16)
+        public_key, private_key = generer_clés_aléatoires(min_bits=1024, max_bits=2048)
         
         # Sauvegarder les clés
         sauvegarder_clés(public_key, private_key, dossier_clé)
@@ -31,10 +31,8 @@ def window_generer_clés():
         d, _ = private_key
         
         messagebox.showinfo("Succès", 
-            f"Clés générées et sauvegardées !\n\n"
-            f"Clé publique : e={e}, n={n}\n"
-            f"Clé privée : d={d}, n={n}")
-        
+            f"Clés générées et sauvegardées !\n\n")
+           
         lbl_clés_status.config(text="✓ Clés générées avec succès", fg="green")
     
     except Exception as e:

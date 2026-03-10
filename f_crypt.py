@@ -55,7 +55,7 @@ def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
         
         # Sauvegarder le message chiffré
         nom_fichier = os.path.basename(chemin_fichier)
-        nom_sortie = f"chiffré_{nom_fichier}.txt"
+        nom_sortie = f"chiffré_{nom_fichier}"
         chemin_sortie = os.path.join(dossier_sortie, nom_sortie)
         
         # Stocker: longueur_originale|message_chiffré
