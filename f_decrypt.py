@@ -14,26 +14,16 @@ def cléPriv(fichier):
 
 def decryptage(m_crypté, d, n):
     """Déchiffre un message en utilisant RSA asymétrique
-    
-    Args:
         m_crypté (int): Le message chiffré
         d (int): L'exposant privé
         n (int): Le module RSA
-        
-    Returns:
-        int: Le message en clair
     """
-    return pow(m_crypté, d, n)
+    return pow(m_crypté, d, n) #= m_crypté^d mod n
 
-def decrypt(fichier, keyPriv):
+#def decrypt(fichier, keyPriv):
     """Déchiffre un fichier contenant un message chiffré
-    
-    Args:
         fichier (str): Chemin du fichier chiffré
         keyPriv (str): La clé privée au format 'd,n'
-        
-    Returns:
-        int: Le message déchiffré
     """
     with open(fichier, 'r') as f:
         texteChiffré = int(f.read().strip())
@@ -47,15 +37,8 @@ def decrypt(fichier, keyPriv):
 
 def dechiffrer_fichier(chemin_fichier, d, n, dossier_sortie):
     """Déchiffre un fichier chiffré avec RSA
-    
-    Args:
-        chemin_fichier (str): Chemin du fichier chiffré
         d (int): L'exposant privé
         n (int): Le module RSA
-        dossier_sortie (str): Dossier de sauvegarde
-        
-    Returns:
-        str: Chemin du fichier déchiffré
     """
     try:
         # Lire le message chiffré avec sa longueur

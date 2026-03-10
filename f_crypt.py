@@ -18,28 +18,16 @@ def element_e(phi_n):
 
 def cryptage(m, e, n):
     """Chiffre un message avec RSA
-    
-    Args:
         m (int): Le message à chiffrer
         e (int): L'exposant public
         n (int): Le module RSA
-        
-    Returns:
-        int: Le message chiffré
     """
     return pow(m, e, n)
 
 def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
     """Chiffre un fichier texte avec RSA
-    
-    Args:
-        chemin_fichier (str): Chemin du fichier à chiffrer
         e (int): L'exposant public
         n (int): Le module RSA
-        dossier_sortie (str): Dossier de sauvegarde
-        
-    Returns:
-        str: Chemin du fichier chiffré
     """
     try:
         # Lire le contenu du fichier
