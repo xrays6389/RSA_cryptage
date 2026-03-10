@@ -4,8 +4,8 @@ from sympy import isprime, mod_inverse
 
 def nombre_premier_aleatoire(min_val, max_val):
     """Génère un nombre premier aléatoire entre min_val et max_val
-        min_val (int): Valeur minimale
-        max_val (int): Valeur maximale
+        min_val : Valeur minimale
+        max_val : Valeur maximale
     """
     while True:
         n = random.randint(min_val, max_val)
@@ -14,8 +14,8 @@ def nombre_premier_aleatoire(min_val, max_val):
 
 def generer_clés_aléatoires(min_bits=10, max_bits=20):
     """Génère des clés RSA avec des nombres premiers aléatoires
-        min_bits (int): Nombre minimum de bits pour les nombres premiers
-        max_bits (int): Nombre maximum de bits pour les nombres premiers
+        min_bits :Nombre minimum de bits pour les nombres premiers
+        max_bits :Nombre maximum de bits pour les nombres premiers
     """
     min_val = 2 ** min_bits
     max_val = 2 ** max_bits
@@ -47,8 +47,9 @@ def generer_clés_aléatoires(min_bits=10, max_bits=20):
 
 def generate_keys(p, q):
     """Genere les clés RSA.
-        p (int): nombre premier.
-        q (int): second nombre premier."""
+        p : nombre premier.
+        q : second nombre premier.
+    """
 
     # Calculate n
     n = p * q
@@ -69,10 +70,7 @@ def generate_keys(p, q):
     return public_key, private_key
 
 def sauvegarder_clés(public_key, private_key, dossier):
-    """Sauvegarde les clés dans des fichiers
-        public_key (tuple): Clé publique (e, n)
-        private_key (tuple): Clé privée (d, n)
-    """
+    """Sauvegarde les clés dans des fichiers """
     # Créer le dossier s'il n'existe pas
     os.makedirs(dossier, exist_ok=True)
     

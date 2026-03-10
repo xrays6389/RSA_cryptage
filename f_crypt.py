@@ -18,16 +18,16 @@ def element_e(phi_n):
 
 def cryptage(m, e, n):
     """Chiffre un message avec RSA
-        m (int): Le message à chiffrer
-        e (int): L'exposant public
-        n (int): Le module RSA
+        m : Le message à chiffrer
+        e : L'exposant public
+        n : Le module RSA
     """
     return pow(m, e, n)
 
 def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
     """Chiffre un fichier texte avec RSA
-        e (int): L'exposant public
-        n (int): Le module RSA
+        e : L'exposant public
+        n : Le module RSA
     """
     try:
         # Lire le contenu du fichier
