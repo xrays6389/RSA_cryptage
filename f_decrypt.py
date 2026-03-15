@@ -14,26 +14,11 @@ def cléPriv(fichier):
 
 def decryptage(m_crypté, d, n):
     """Déchiffre un message en utilisant RSA asymétrique
-        m_crypté (int): Le message chiffré
-        d (int): L'exposant privé
-        n (int): Le module RSA
+        m_crypté : Le message chiffré
+        d : L'exposant privé
+        n : Le module RSA
     """
     return pow(m_crypté, d, n) #= m_crypté^d mod n
-
-#def decrypt(fichier, keyPriv):
-    """Déchiffre un fichier contenant un message chiffré
-        fichier (str): Chemin du fichier chiffré
-        keyPriv (str): La clé privée au format 'd,n'
-    """
-    with open(fichier, 'r') as f:
-        texteChiffré = int(f.read().strip())
-    
-    # Parser la clé privée au format 'd,n'
-    d, n = map(int, keyPriv.split(','))
-    
-    # Déchiffrer le message
-    texteDéchiffré = decryptage(texteChiffré, d, n)
-    return texteDéchiffré
 
 def dechiffrer_fichier(chemin_fichier, d, n, dossier_sortie):
     """Déchiffre un fichier chiffré avec RSA
@@ -54,10 +39,7 @@ def dechiffrer_fichier(chemin_fichier, d, n, dossier_sortie):
         message_décrypté = decryptage(message_chiffré, d, n)
         
         # Convertir de nouveau en texte avec la bonne longueur
-        contenu = message_décrypté.to_bytes(
-            longueur_originale, 
-            byteorder='big'
-        ).decode('utf-8')
+        contenu = message_décrypté.to_bytes(longueur_originale, byteorder='big').decode('utf-8') # Décode en UTF-8 
         
         # Sauvegarder le fichier déchiffré
         nom_fichier = os.path.basename(chemin_fichier)
@@ -66,6 +48,8 @@ def dechiffrer_fichier(chemin_fichier, d, n, dossier_sortie):
         
         with open(chemin_sortie, 'w', encoding='utf-8') as f:
             f.write(contenu)
+
+        #os.remove(chemin_fichier) # Supprimer le fichier chiffré après déchiffrement
         
         return chemin_sortie
     

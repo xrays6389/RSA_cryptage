@@ -22,7 +22,7 @@ def cryptage(m, e, n):
         e : L'exposant public
         n : Le module RSA
     """
-    return pow(m, e, n)
+    return pow(m, e, n) #= m^e mod n
 
 def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
     """Chiffre un fichier texte avec RSA
@@ -35,8 +35,8 @@ def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
             contenu = f.read()
         
         # Convertir en nombre entier (ASCII)
-        contenu_bytes = contenu.encode('utf-8')
-        message = int.from_bytes(contenu_bytes, byteorder='big')
+        contenu_bytes = contenu.encode('utf-8') 
+        message = int.from_bytes(contenu_bytes, byteorder='big') 
         
         # Chiffrer
         message_chiffré = cryptage(message, e, n)
@@ -49,6 +49,8 @@ def chiffrer_fichier(chemin_fichier, e, n, dossier_sortie):
         # Stocker: longueur_originale|message_chiffré
         with open(chemin_sortie, 'w') as f:
             f.write(f"{len(contenu_bytes)}|{message_chiffré}")
+
+        #os.remove(chemin_fichier) # Supprimer le fichier original après chiffrement
         
         return chemin_sortie
     

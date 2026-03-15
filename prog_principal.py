@@ -93,7 +93,7 @@ def window_uncrypt():
         messagebox.showerror("Erreur", f"Erreur lors du déchiffrement : {e}")
 
 def choisir_fichier():
-    """Sélectionne un fichier et met à jour l'affichage"""
+    """Sélectionne un fichier"""
     global fichier_selectionne
     fichier_selectionne = filedialog.askopenfilename(title="Sélectionnez un fichier")
     if fichier_selectionne:
@@ -101,7 +101,7 @@ def choisir_fichier():
         lbl_fichier.config(text=f"📂 Fichier : {nom}", fg="blue")
 
 def choisir_dossier():
-    """Sélectionne un dossier de sortie et met à jour l'affichage"""
+    """Sélectionne un dossier"""
     global dossier_selectionne
     dossier_selectionne = filedialog.askdirectory(title="Sélectionnez un dossier de sauvegarde")
     if dossier_selectionne:
@@ -109,7 +109,7 @@ def choisir_dossier():
         lbl_dossier.config(text=f"📁 Dossier : {nom}", fg="blue")
 
 def choisir_d_clé():
-    """Sélectionne le dossier pour les clés et met à jour l'affichage"""
+    """Sélectionne le dossier pour les clés"""
     global dossier_clé
     dossier_clé = filedialog.askdirectory(title="Sélectionnez le dossier pour les clés")
     if dossier_clé:
@@ -126,7 +126,7 @@ root.config(bg="lightgray")
 titre = tk.Label(root, text="Système RSA", font=("Arial", 18, "bold"), bg="lightgray")
 titre.pack(pady=15)
 
-# === FRAME 1: SÉLECTIONS ===
+# === Partie 1: SÉLECTIONS ===
 frame_selection = tk.Frame(root, bg="white", relief="sunken", bd=2)
 frame_selection.pack(padx=10, pady=10, fill="both", expand=False)
 
@@ -147,7 +147,7 @@ lbl_clé = tk.Label(frame_selection, text="Aucun dossier clé sélectionné", fg
 lbl_clé.pack(anchor="w", padx=10, pady=5)
 tk.Button(frame_selection, text="🔑 Choisir un dossier pour les clés", command=choisir_d_clé, bg="skyblue").pack(anchor="w", padx=10, pady=(2, 10))
 
-# === FRAME 2: GESTION DES CLÉS ===
+# === Partie 2: GESTION DES CLÉS ===
 frame_clés = tk.Frame(root, bg="white", relief="sunken", bd=2)
 frame_clés.pack(padx=10, pady=10, fill="both", expand=False)
 
@@ -159,7 +159,7 @@ lbl_clés_status.pack(anchor="w", padx=10, pady=5)
 tk.Button(frame_clés, text="🔐 Générer les clés RSA", command=window_generer_clés, bg="lightgreen", 
           font=("Arial", 10, "bold")).pack(padx=10, pady=(5, 10), fill="x")
 
-# === FRAME 3: CRYPTAGE/DÉCRYPTAGE ===
+# === Partie 3: CRYPTAGE/DÉCRYPTAGE ===
 frame_crypto = tk.Frame(root, bg="white", relief="sunken", bd=2)
 frame_crypto.pack(padx=10, pady=10, fill="both", expand=True)
 

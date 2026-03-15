@@ -3,20 +3,14 @@ import os
 from sympy import isprime, mod_inverse
 
 def nombre_premier_aleatoire(min_val, max_val):
-    """Génère un nombre premier aléatoire entre min_val et max_val
-        min_val : Valeur minimale
-        max_val : Valeur maximale
-    """
+    """Génère un nombre premier aléatoire entre min_val et max_val"""
     while True:
         n = random.randint(min_val, max_val)
         if isprime(n):
             return n
 
 def generer_clés_aléatoires(min_bits=10, max_bits=20):
-    """Génère des clés RSA avec des nombres premiers aléatoires
-        min_bits :Nombre minimum de bits pour les nombres premiers
-        max_bits :Nombre maximum de bits pour les nombres premiers
-    """
+    """Génère des clés RSA avec des nombres premiers aléatoires"""
     min_val = 2 ** min_bits
     max_val = 2 ** max_bits
     
@@ -34,7 +28,7 @@ def generer_clés_aléatoires(min_bits=10, max_bits=20):
     phi = (p - 1) * (q - 1)
     
     # Choisir e (exposant public)
-    e = 65537  # Choix commun pour e
+    e = 65537 
     
     # Calculer d (exposant privé)
     d = mod_inverse(e, phi)
@@ -43,30 +37,6 @@ def generer_clés_aléatoires(min_bits=10, max_bits=20):
     public_key = (e, n)
     private_key = (d, n)
     
-    return public_key, private_key
-
-def generate_keys(p, q):
-    """Genere les clés RSA.
-        p : nombre premier.
-        q : second nombre premier.
-    """
-
-    # Calculate n
-    n = p * q
-
-    # Calculate Euler's totient function
-    phi = (p - 1) * (q - 1)
-
-    # Choose e
-    e = 65537  # Common choice for e
-
-    # Calculate d
-    d = mod_inverse(e, phi)
-
-    # Public key (e, n) and private key (d, n)
-    public_key = (e, n)
-    private_key = (d, n)
-
     return public_key, private_key
 
 def sauvegarder_clés(public_key, private_key, dossier):
